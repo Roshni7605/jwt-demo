@@ -16,21 +16,37 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * @param user
+     * @return
+     */
     @PostMapping("/register")
     public User registerUser(@RequestBody User user){
         return userService.registerUser(user);
     }
 
+    /**
+     * @param loginDTO
+     * @return
+     */
     @PostMapping("/login")
     public String userLogin(@RequestBody LoginDTO loginDTO){
         return userService.userLogin(loginDTO);
     }
 
+    /**
+     * @param token
+     * @return
+     */
     @GetMapping("/get-all-user")
     public List<User> getAllUsers(@RequestParam String token){
         return userService.getAllUsers(token);
     }
 
+    /**
+     * @param token
+     * @return
+     */
     @GetMapping("/get-user")
     public Optional<User> getUser(@RequestParam String token){
         return userService.getUser(token);
